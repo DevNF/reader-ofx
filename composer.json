@@ -1,0 +1,19 @@
+{
+    "name": "nfservice/reader-ofx",
+    "description": "Biblioteca para leitura de arquivos OFX",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jefferson Moreira",
+            "email": "jeematheus@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ReaderOFX\\": "src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "require": {}
+}
