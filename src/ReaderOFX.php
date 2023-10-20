@@ -74,7 +74,7 @@ class ReaderOFX
      */
     public function retorno()
     {
-        $retorno    =   new \SimpleXMLElement(utf8_encode($this->closeTags($this->arquivo)));
+        $retorno    =   new \SimpleXMLElement((string)($this->closeTags($this->arquivo)));
 
         $this->bankTranList =   $retorno->BANKMSGSRSV1->STMTTRNRS->STMTRS->BANKTRANLIST->STMTTRN;
         $this->dtStar   =   $retorno->BANKMSGSRSV1->STMTTRNRS->STMTRS->BANKTRANLIST->DTSTART;
