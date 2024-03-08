@@ -42,7 +42,7 @@ class ReaderOFX
      * @param string $ofx Caminho do arquivo OFX
      *
      * @access public
-     * @return SimpleXMLElement
+     * @return string
      */
     public function closeTags($ofx = null)
     {
@@ -74,7 +74,8 @@ class ReaderOFX
      */
     public function retorno()
     {
-        $retorno    =   new \SimpleXMLElement((string)($this->closeTags($this->arquivo)));
+        $escaped_special_characters = preg_replace('/&(?!#?[a-z0-9]+;)/', '&amp;', $this->closeTags($this->arquivo));
+        $retorno    =   new \SimpleXMLElement(mb_convert_encoding($escaped_special_characters, 'UTF-8'));
 
         $this->bankTranList =   $retorno->BANKMSGSRSV1->STMTTRNRS->STMTRS->BANKTRANLIST->STMTTRN;
         $this->dtStar   =   $retorno->BANKMSGSRSV1->STMTTRNRS->STMTRS->BANKTRANLIST->DTSTART;
